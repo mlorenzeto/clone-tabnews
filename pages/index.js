@@ -1,9 +1,12 @@
 function Home() {
   return (
-    <h1>
-      Por que o zagueiro, quando se aposenta, é o jogador que deixa mais
-      saudades?
-    </h1>
+    <div className="container">
+      <h1>Página em construção 🏗️</h1>
+      <p>
+        Estamos trabalhando em algum conteúdo interessante para ser adicionado
+        nessa página!
+      </p>
+    </div>
   );
 }
 
