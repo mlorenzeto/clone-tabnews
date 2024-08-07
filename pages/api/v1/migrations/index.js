@@ -3,10 +3,11 @@ import { join } from "node:path";
 import database from "infra/database";
 
 export default async function migrations(request, response) {
-  if (!["GET", "POST"].includes(request.method)) {
+  const allowedMethods = ["GET", "POST"];
+  if (!allowedMethods.includes(request.method)) {
     return response
       .status(405)
-      .send(`Method Request ${request.method} not allowed`);
+      .json({ error: `Method ${request.method} not allowed` });
   }
   let dbClient;
 
@@ -39,6 +40,7 @@ export default async function migrations(request, response) {
     }
   } catch (error) {
     console.error(error);
+    throw error;
   } finally {
     await dbClient.end();
   }
